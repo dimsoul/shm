@@ -8,7 +8,7 @@
 #include <sys/shm.h>
 #include <cstring>
 
-template <typename T, bool detroy = true, bool IgnoreExist = true>
+template <typename T, bool autoDestroy = true, bool ignoreExist = true>
 class shm
 {
 public:
@@ -17,7 +17,7 @@ public:
     {
         if (size != 0) {
             m_size = size;
-            if (!IgnoreExist)
+            if (!ignoreExist)
             {
                 flags |= IPC_EXCL;
             }
@@ -66,7 +66,7 @@ public:
 
     virtual ~shm()
     {
-        if (detroy) {
+        if (autoDestroy) {
             delShm();
         }
     }

@@ -16,7 +16,7 @@ struct A
 int main () 
 {
     try {
-        auto pa = shm<A,false>("./", 0666, ProjectName, 6);
+        auto pa = shm<A,false, false>("./", 0666, ProjectName, 6);
         pa.unmapShm();
     } catch (const std::exception& e) {
         cout << e.what() << endl;
